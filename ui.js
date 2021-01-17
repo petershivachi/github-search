@@ -30,4 +30,48 @@ class UI {
     <h class="page-heading mb-3">Latest Repos</h3>
     <div id="repos"></div>`
   }
+
+  //clear Profile
+  clearProfile(){
+    this.profile.innerHTML = '';
+  }
+
+  //show an alert
+  showAlert(message, className){
+    //remove existing alert before displaying another alert
+    this.clearAlert();
+
+    //create a div
+    const div = document.createElement('div');
+
+    //add a class to the div
+    div.className = className;
+
+    //add text to the classname
+    div.appendChild(document.createTextNode(message));
+
+    //get the parent element
+    const container = document.querySelector('.searchContainer');
+
+    //get the search element
+    const search = document.querySelector('.search');
+
+    //insert an alert
+    container.insertBefore(div, search);
+
+    //set time out for an alert
+    setTimeout(() => {
+      const alert = document.querySelector('.alert');
+      alert.remove();
+    }, 2000)
+  }
+
+  //clear alert
+  clearAlert(){
+    const currentAlert = document.querySelector('.alert');
+
+    if(currentAlert){
+      currentAlert.remove();
+    }
+  }
 }
