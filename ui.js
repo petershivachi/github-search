@@ -31,6 +31,30 @@ class UI {
     <div id="repos"></div>`
   }
 
+  //show user repositories
+  showRepos(repos){
+    let output = '';
+
+    repos.forEach(function(repo){
+      output += `
+      <div class="card card-body mb-2">
+      <div clas="row">
+      <div class="col-md-6">
+      <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+      </div>
+      <div class="col-md-6">
+      <span class="badge badge-primary p-2">Watchers: ${repo.watchers_count}</span>
+      <span class="badge badge-secondary p-2">Stars: ${repo.stargazers_count}</span>
+      <span class="badge badge-success p-2">Forks: ${user.forks_count}</span>
+      </div>
+      </div>
+      </div>`;
+    });
+
+    //output repos
+    document.getElementById('repo').innerHTML = output;
+  }
+
   //clear Profile
   clearProfile(){
     this.profile.innerHTML = '';
